@@ -1,0 +1,54 @@
+interface Subject
+{
+	public void print();
+} 
+
+
+
+class realSubject implements Subject 
+{
+	public void print()
+	{
+		System.out.println("Subject print...");
+	}
+}
+
+
+
+
+
+class proxySubject implements Subject 
+{
+	private Subject subject ;
+	public proxySubject(Subject subject)
+	{
+		this.subject = subject;
+	}
+	public void print()
+	{
+		this.ready();
+		this.subject.print();
+		this.over();
+	}
+	public void ready()
+	{
+		System.out.println("ready  for Subject");
+	}
+	public void over()
+	{
+		System.out.println("over");
+	}
+}
+
+
+
+
+
+class proxyText 
+{
+	public static void main(String[] args) 
+	{
+		Subject sub  = new proxySubject( new realSubject());
+		sub.print();
+	}
+}
