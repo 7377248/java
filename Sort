@@ -1,0 +1,33 @@
+public class Sort
+{
+	//冒泡排序
+	public void sort(int [] data)
+	{	
+		for (int  i =  0;i<data.length ;i++ )
+		{
+			for (int y = 0;y< data.length -1 ;y++ )
+			{
+				if (data[y]>data[y+1])
+				{
+					int temp = data[y];
+					data[y]=data[y+1];
+					data[y+1] = temp;
+				}
+			}
+		}
+	}
+	
+	//插入排序
+	public void insertionSort(int data[])
+	{
+		for(int i = 1;i<data.length;i++)
+		{
+			int temp = data[i];
+			for (int y = i-1;y >= 0 && temp<data[y] ;y-- )
+			{
+				data[y+1] = data[y];
+				data[y] = temp;
+			}
+		}
+	}
+}
