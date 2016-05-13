@@ -1,0 +1,31 @@
+import java.lang.reflect.*;
+import java.lang.String.*;
+class Book
+{
+	private String title;
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+}
+public class  MethodReflectTest
+{
+	public static void main(String[] args) throws Exception
+	{
+		String fieldName = "title";
+		Class<?> cls = Class.forName("Book");
+		Object obj = cls.newInstance();
+		Method setMet = cls.getMethod("set"+initcap(fieldName),String.class);
+		Method getMet = cls.getMethod("get"+initcap(fieldName));
+		setMet.invoke(obj,"Java开发");
+		System.out.println(getMet.invoke(obj));
+	}
+	public static String initcap(String str)
+	{
+		return str.substring(0,1).toUpperCase()+str.substring(1);
+	}
+}
