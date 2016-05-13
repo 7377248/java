@@ -1,0 +1,26 @@
+import java.lang.reflect.*;
+import java.lang.String.*;
+class Book
+{
+	private String title;
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+}
+public class  FieldReflectTest
+{
+	public static void main(String[] args) throws Exception
+	{
+		Class<?> cls = Class.forName("Book");
+		Object obj = cls.newInstance();
+		Field titleField = cls.getDeclaredField("title");
+		titleField.setAccessible(true);
+		titleField.set(obj,"java开发");
+		System.out.println(titleField.get(obj));
+	}
+}
