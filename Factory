@@ -50,21 +50,19 @@ class HP implements Print
 
 public class PrintFactory 
 {
-	public static  Print getPrint(int index)
+	public static  Print getPrint(String classname)
 	{
-		if(index == 0)
+		Print p = null;
+		try
 		{
-			return new HP();
+			p=(Print)Class.forName(classname).newInstance();
 		}
-		else if(index == 1)
+		catch(Exception e)
 		{
-			return new Canon();
 		}
-		else
-		{
-			return null;
-		}
+		return p;
 	}
+	
 }
 
 
@@ -72,7 +70,7 @@ class PrintTest
 {
 	public static void main(String[] args) 
 	{
-		Print print = PrintFactory.getPrint(1);
+		Print print = PrintFactory.getPrint(HP);
 		print.open();
 		print.print("测试");
 		print.close();
