@@ -1,0 +1,16 @@
+import java.io.*;
+public class FileIoTest
+{
+	public static void main (String [] args)  throws Exception
+	{
+		File file = new File("d:"+File.separator+"src.txt");
+		if(file.exists())
+		{
+			System.out.println(file.delete());
+		}
+		else
+		{
+		System.out.println(file.createNewFile());
+		}
+	}
+}
