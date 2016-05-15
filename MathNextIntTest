@@ -1,0 +1,38 @@
+import java.util.*;
+public class MathNextIntTest
+{
+	public static void main(String[] args)
+	{
+		Random r = new Random();
+		int[] data = new int[7];
+		int foot = 0;
+		while(foot<7)
+		{
+			int t= r.nextInt(37);
+			if(!isRepeat(data,t))
+			{
+				data[foot++]= t;
+			}
+		}
+		java.util.Arrays.sort(data);
+		for(int i : data)
+		{
+			System.out.print(i+" ");
+		}
+	}
+	public static  boolean isRepeat(int[] temp , int num)
+	{
+		if(num == 0)
+		{
+			return true;
+		}
+		for(int i = 0;i<temp.length;i++)
+		{
+			if(temp[i] == num)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+}
