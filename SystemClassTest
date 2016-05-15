@@ -1,0 +1,31 @@
+import java.lang.System.*;
+class Member
+{
+	public Member()
+	{
+		System.out.println("诞生了");
+	}
+	@Override
+	protected void finalize() throws Throwable
+	{
+		System.out.println("消失");
+		//throw new Exception("以后继续");
+	}
+}
+public class SystemClassTest
+{
+	public static void main(String [] args)
+	{
+		long start = System.currentTimeMillis();
+		String str = "";
+		for(int i = 0; i<9999;i++)
+		{
+			str+= i;
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
+		Member mem = new Member();
+		mem = null;
+		System.gc();
+	}
+}
