@@ -1,16 +1,22 @@
-import java.io.*;
-public class FileIoTest
+import java.io.File;
+import java.io.IOException;
+
+public class FileTest
 {
-	public static void main (String [] args)  throws Exception
+	public static void main(String [] args) throws IOException
 	{
-		File file = new File("d:"+File.separator+"src.txt");
+		File file = new File("d:"+File.separator+"test"+File.separator+"hello"+File.separator+"test.txt");
+		if(!file.getParentFile().exists())
+		{
+			file.getParentFile().mkdirs();
+		}
 		if(file.exists())
 		{
-			System.out.println(file.delete());
+			file.delete();
 		}
 		else
 		{
-		System.out.println(file.createNewFile());
+			System.out.println(file.createNewFile());
 		}
 	}
 }
