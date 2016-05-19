@@ -1,0 +1,19 @@
+import java.util.*;
+public class MapTest
+{
+	public static void main(String [] args)
+	{
+		Map<String , Integer>  map =  new HashMap<String, Integer>();
+		map.put("一",1);
+		map.put("二",2);
+		map.put("三",3);
+		map.put("四",4);
+		Set<Map.Entry<String,Integer>> set= map.entrySet();
+		Iterator<Map.Entry<String,Integer>> iter = set.iterator();
+		while(iter.hasNext())
+		{
+			Map.Entry<String,Integer> me = iter.next();
+			System.out.println(me.getKey()+"="+me.getValue());
+		}
+	}
+}
