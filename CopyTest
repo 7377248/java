@@ -1,0 +1,48 @@
+import java.io.*;
+public class CopyTest
+{
+	public static void main(String [] args)
+	{
+		long start = System.currentTimeMillis();
+		File inFile = new File("e:"+File.separator+"11.ape");
+		if(!inFile.exists())
+		{
+			System.out.println("源文件不存在!");
+		}
+		File outFile = new File("d:"+File.separator+"78.ape");
+		if(!outFile.getParentFile().exists())
+		{
+			outFile.getParentFile().mkdirs();
+		}
+		InputStream input =  null;
+		OutputStream output  = null;
+		try{
+			input = new FileInputStream(inFile);
+			output = new FileOutputStream(outFile);
+			byte[] data = new byte[1024];
+			int temp = 0;
+			while((temp = input.read(data)) != -1)
+			{
+				output.write(data,0,temp);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				input.close();
+				output.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			long end = System.currentTimeMillis();
+			System.out.println(end - start);
+		}
+	}
+}
